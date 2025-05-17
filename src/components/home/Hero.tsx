@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Search, Filter, Shield, Clock, Zap } from 'lucide-react';
-import { FaKey, FaWifi, FaBriefcase, FaParking, FaSwimmingPool, FaDumbbell, FaConciergeBell, FaShieldAlt, FaCalendarAlt, FaStar } from 'react-icons/fa';
+import { FaKey, FaWifi, FaBriefcase, FaParking, FaSwimmingPool, FaDumbbell, FaConciergeBell, FaShieldAlt, FaCalendarAlt, FaStar, FaShareAlt } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 
 // Category filters for short-term apartments
@@ -256,8 +256,11 @@ export default function Hero() {
             <motion.div 
               key={apartment.id}
               className="group relative"
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.2 }}
+              whileHover={{ 
+                y: -10, 
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <div className="apartment-image-container">
                 <Image
@@ -267,6 +270,9 @@ export default function Hero() {
                   className="apartment-image"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
+                
+                {/* Spotlight hover effect overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 {/* Badges */}
                 <div className="absolute top-2 left-2 flex space-x-1 z-10">
@@ -283,10 +289,34 @@ export default function Hero() {
                     </div>
                   )}
                 </div>
+                
+                {/* Quick action buttons - revealed on hover */}
+                <div className="absolute bottom-2 right-2 z-10 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <motion.button 
+                    className="bg-white/90 p-2 rounded-full hover:bg-white transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <FaStar className="h-4 w-4 text-gray-800" />
+                  </motion.button>
+                  <motion.button 
+                    className="bg-white/90 p-2 rounded-full hover:bg-white transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <FaShareAlt className="h-4 w-4 text-gray-800" />
+                  </motion.button>
+                </div>
               </div>
-              <div className="mt-4">
+              
+              <motion.div 
+                className="mt-4 bg-gray-900 p-4 rounded-lg border border-gray-800"
+                initial={{ opacity: 0.8 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.2 }}
+              >
                 <div className="flex justify-between">
-                  <h3 className="text-sm font-medium text-white">
+                  <h3 className="text-sm font-medium text-white line-clamp-1">
                     <Link href={`/apartments/${apartment.id}`}>
                       {apartment.title}
                     </Link>
@@ -296,7 +326,7 @@ export default function Hero() {
                     <span className="text-sm text-white">{apartment.rating}</span>
                   </div>
                 </div>
-                <p className="mt-1 text-sm text-gray-400">{apartment.location}</p>
+                <p className="mt-1 text-sm text-gray-400 line-clamp-1">{apartment.location}</p>
                 <p className="mt-1 text-sm text-gray-400">{apartment.type}</p>
                 <p className="mt-1 text-sm text-gray-400">{apartment.dates}</p>
                 
@@ -311,9 +341,15 @@ export default function Hero() {
                 
                 <div className="mt-3 flex items-end justify-between">
                   <p className="text-sm font-medium text-white">${apartment.price} <span className="text-gray-400 font-normal">night</span></p>
-                  <button className="text-xs bg-[#f3e17b] text-black px-3 py-1 rounded hover:bg-[#f3e17b]/90">Book Now</button>
+                  <motion.button 
+                    className="text-xs bg-[#f3e17b] text-black px-3 py-1 rounded hover:bg-[#f3e17b]/90"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Book Now
+                  </motion.button>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
