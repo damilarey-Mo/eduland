@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Search, Filter, Shield, Clock, Zap } from 'lucide-react';
 import { FaKey, FaWifi, FaBriefcase, FaParking, FaSwimmingPool, FaDumbbell, FaConciergeBell, FaShieldAlt, FaCalendarAlt, FaStar, FaShareAlt } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Category filters for short-term apartments
 const categories = [
@@ -20,27 +20,7 @@ const categories = [
   { name: 'High-speed WiFi', icon: FaWifi },
 ];
 
-// Available apartment images
-const apartmentImages = [
-  '/images/apartments/a819df177d8748602d1b605354fc5104.jpg',
-  '/images/apartments/962e946bb099b9aa69d8d41bf988a57e.jpg',
-  '/images/apartments/6b9b9ae5653bc088cb709fc0c0a2b4f4.jpg',
-  '/images/apartments/a2e67de7850ce1fa3b5613137754007a.jpg',
-  '/images/apartments/248252fc51e500e5d0f00f04c32e30d8.jpg',
-  '/images/apartments/52e1f6551d0e2c076310b1d0f910848e.jpg',
-  '/images/apartments/162ffe853982f246c8b322055209429c.jpg',
-  '/images/apartments/70b7875e1f4223f45dd01083009aba45.jpg',
-  '/images/apartments/40b75d746de739e5398a65aa43c40aa3.jpg',
-  '/images/apartments/70aeea7e6bc11ead9b3fef2dfe03ba32.jpg',
-  '/images/apartments/90864b02a1db90b7590f30e5635a5c1d.jpg',
-  '/images/apartments/b84ecc99474c89523b126758c6175f52.jpg',
-  '/images/apartments/2bdr.jpg',
-  '/images/apartments/Luxury 2BR with City View.jpg',
-  '/images/apartments/Modern Studio in Downtown.jpg',
-  '/images/apartments/Corporate 1BR near Convention Center.jpg',
-];
-
-// Featured apartments data
+// Featured apartments data with fixed images to avoid hydration mismatch
 const featuredApartments = [
   {
     id: 1,
@@ -50,7 +30,7 @@ const featuredApartments = [
     dates: 'Available now',
     price: 139,
     rating: 4.92,
-    image: apartmentImages[Math.floor(Math.random() * apartmentImages.length)],
+    image: '/images/apartments/162ffe853982f246c8b322055209429c.jpg',
     perks: ['Fully Equipped Kitchen', 'High-speed WiFi', 'Business Ready'],
     instant: true,
     verified: true,
@@ -63,7 +43,7 @@ const featuredApartments = [
     dates: 'Available next week',
     price: 259,
     rating: 4.88,
-    image: apartmentImages[Math.floor(Math.random() * apartmentImages.length)],
+    image: '/images/apartments/b84ecc99474c89523b126758c6175f52.jpg',
     perks: ['Gym Access', 'Concierge Service', 'Parking'],
     instant: false,
     verified: true,
@@ -76,7 +56,7 @@ const featuredApartments = [
     dates: 'Flexible dates',
     price: 179,
     rating: 4.95,
-    image: apartmentImages[Math.floor(Math.random() * apartmentImages.length)],
+    image: '/images/apartments/40b75d746de739e5398a65aa43c40aa3.jpg',
     perks: ['High-speed WiFi', 'Business Ready', 'Weekly Cleaning'],
     instant: true,
     verified: true,
@@ -89,7 +69,7 @@ const featuredApartments = [
     dates: 'Available now',
     price: 199,
     rating: 4.89,
-    image: apartmentImages[Math.floor(Math.random() * apartmentImages.length)],
+    image: '/images/apartments/40b75d746de739e5398a65aa43c40aa3.jpg',
     perks: ['Dedicated Workspace', 'Fast WiFi', 'Smart TV'],
     instant: false,
     verified: true,
@@ -99,18 +79,6 @@ const featuredApartments = [
 export default function Hero() {
   const [activeCategory, setActiveCategory] = useState('Business Ready');
   const [showFilter, setShowFilter] = useState(false);
-  const [randomizedApartments, setRandomizedApartments] = useState(featuredApartments);
-  
-  // Randomize images on component mount
-  useEffect(() => {
-    // Create a copy of the apartment data and assign random images
-    const randomized = featuredApartments.map(apartment => ({
-      ...apartment,
-      image: apartmentImages[Math.floor(Math.random() * apartmentImages.length)]
-    }));
-    
-    setRandomizedApartments(randomized);
-  }, []);
   
   return (
     <div className="relative bg-black">
@@ -252,7 +220,7 @@ export default function Hero() {
       {/* Featured apartments grid */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {randomizedApartments.map((apartment) => (
+          {featuredApartments.map((apartment) => (
             <motion.div 
               key={apartment.id}
               className="group relative"
@@ -364,6 +332,57 @@ export default function Hero() {
         >
           Show more apartments
         </motion.button>
+      </div>
+      
+      {/* Host CTA Banner */}
+      <div className="bg-gray-900 py-12 mt-8 border-t border-gray-800">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="lg:flex lg:items-center lg:justify-between">
+            <div className="lg:max-w-xl">
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                Have a property to rent?
+              </h2>
+              <p className="mt-3 text-lg text-gray-300">
+                Join our network of hosts and earn income by renting your property to verified guests.
+                We handle the details so you can focus on what matters.
+              </p>
+              <div className="mt-6 flex flex-col sm:flex-row sm:gap-4">
+                <Link 
+                  href="/agent-signup" 
+                  className="flex-none rounded-md bg-[#f3e17b] py-3 px-5 text-center font-semibold text-black shadow-sm hover:bg-[#dac968] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f3e17b]"
+                >
+                  Become a Host
+                </Link>
+                <Link 
+                  href="/hosting-benefits" 
+                  className="mt-3 sm:mt-0 flex-none rounded-md border border-gray-700 py-3 px-5 text-center font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  Learn More
+                </Link>
+              </div>
+            </div>
+            <div className="mt-8 lg:mt-0 lg:ml-8">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-gray-800 p-4 rounded-lg text-center">
+                  <h3 className="text-3xl font-bold text-[#f3e17b]">20%</h3>
+                  <p className="mt-1 text-sm text-gray-300">Higher Average Income</p>
+                </div>
+                <div className="bg-gray-800 p-4 rounded-lg text-center">
+                  <h3 className="text-3xl font-bold text-[#f3e17b]">24/7</h3>
+                  <p className="mt-1 text-sm text-gray-300">Support for Hosts</p>
+                </div>
+                <div className="bg-gray-800 p-4 rounded-lg text-center">
+                  <h3 className="text-3xl font-bold text-[#f3e17b]">48h</h3>
+                  <p className="mt-1 text-sm text-gray-300">Fast Payments</p>
+                </div>
+                <div className="bg-gray-800 p-4 rounded-lg text-center">
+                  <h3 className="text-3xl font-bold text-[#f3e17b]">$1M</h3>
+                  <p className="mt-1 text-sm text-gray-300">Liability Insurance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Map button - fixed at bottom */}

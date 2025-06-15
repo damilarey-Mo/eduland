@@ -6,7 +6,9 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/utils/cn';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { FaHome, FaUserCircle, FaBars, FaAirbnb } from 'react-icons/fa';
+import { FaHome, FaUserCircle, FaBars, FaAirbnb, FaSearch, FaUserAlt, FaTimes, FaSignOutAlt } from 'react-icons/fa';
+import { useCurrentUser, logout } from '@/lib/auth/client';
+import { User } from '@/lib/types/user';
 
 const navigation = [
   { 
@@ -33,7 +35,28 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [showSearch, setShowSearch] = useState(false);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const pathname = usePathname();
+
+  // Get authenticated user
+  const { user, loading, isAuthenticated } = useCurrentUser();
+
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  // Toggle user dropdown
+  const toggleUserDropdown = () => {
+    setUserDropdownOpen(!userDropdownOpen);
+  };
+
+  // Handle logout
+  const handleLogout = async () => {
+    await logout();
+    setUserDropdownOpen(false);
+    if (mobileMenuOpen) setMobileMenuOpen(false);
+  };
 
   // Handle scroll effects
   useEffect(() => {
@@ -123,13 +146,31 @@ export default function Header() {
             </button>
           </div>
           
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center">
             <Link
-              href="/become-a-host"
+              href="/agent-signup"
               className="rounded-full px-4 py-2 text-sm font-medium text-white hover:bg-gray-900"
             >
               Become a Host
             </Link>
+            
+            {!isAuthenticated ? (
+              /* Login button when not logged in */
+              <Link
+                href="/login"
+                className="rounded-full px-4 py-2 text-sm font-medium bg-[#f3e17b] text-black hover:bg-[#dac968] ml-2 transition-colors"
+              >
+                Log in
+              </Link>
+            ) : (
+              /* User name when logged in */
+              <Link
+                href={`/${user?.role}-dashboard`}
+                className="rounded-full px-4 py-2 text-sm font-medium text-white hover:bg-gray-900 ml-2"
+              >
+                Dashboard
+              </Link>
+            )}
             
             <button className="rounded-full p-2 hover:bg-gray-900 mx-2 text-white">
               <Globe className="h-5 w-5" />
@@ -138,15 +179,24 @@ export default function Header() {
             <div className="relative">
               <button 
                 className="flex items-center space-x-2 border border-gray-800 rounded-full p-2 hover:shadow-md transition-shadow"
-                onClick={() => setActiveMenu(activeMenu === 'profile' ? null : 'profile')}
+                onClick={toggleUserDropdown}
               >
-                <FaBars className="h-4 w-4 text-gray-300" />
-                <FaUserCircle className="h-7 w-7 text-[#f3e17b]" />
+                <div className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center overflow-hidden">
+                  {user?.image ? (
+                    <img 
+                      src={user.image} 
+                      alt={user.name || 'User'}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <FaUserAlt className="h-4 w-4 text-gray-300" />
+                  )}
+                </div>
               </button>
               
               {/* Profile dropdown */}
               <AnimatePresence>
-                {activeMenu === 'profile' && (
+                {userDropdownOpen && (
                   <motion.div
                     className="absolute right-0 z-10 mt-3 w-60 rounded-xl bg-gray-900 shadow-lg ring-1 ring-gray-800 overflow-hidden"
                     initial={{ opacity: 0, y: 10 }}
@@ -155,23 +205,50 @@ export default function Header() {
                     transition={{ duration: 0.2 }}
                   >
                     <div className="py-2">
-                      <div className="border-b border-gray-800">
-                        <Link
-                          href="/login"
-                          className="block px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
-                        >
-                          Log in
-                        </Link>
-                        <Link
-                          href="/signup"
-                          className="block px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
-                        >
-                          Sign up
-                        </Link>
-                      </div>
+                      {!user ? (
+                        <div className="border-b border-gray-800">
+                          <Link
+                            href="/login"
+                            className="block px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
+                          >
+                            Log in
+                          </Link>
+                          <Link
+                            href="/signup"
+                            className="block px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
+                          >
+                            Sign up
+                          </Link>
+                        </div>
+                      ) : (
+                        <div className="border-b border-gray-800">
+                          <div className="px-4 py-3">
+                            <p className="text-sm font-medium text-white">{user.name}</p>
+                            <p className="text-xs text-gray-400">{user.email}</p>
+                          </div>
+                          <Link
+                            href={`/${user.role}-dashboard`}
+                            className="block px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
+                          >
+                            Dashboard
+                          </Link>
+                          <Link
+                            href={`/${user.role}-dashboard/profile`}
+                            className="block px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
+                          >
+                            Profile
+                          </Link>
+                          <button
+                            onClick={handleLogout}
+                            className="block w-full text-left px-4 py-2 text-sm font-medium text-red-400 hover:bg-gray-800"
+                          >
+                            Log out
+                          </button>
+                        </div>
+                      )}
                       <div className="pt-2">
                         <Link
-                          href="/become-a-host"
+                          href="/agent-signup"
                           className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800"
                         >
                           Host your home
@@ -200,10 +277,14 @@ export default function Header() {
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={toggleMobileMenu}
             >
               <span className="sr-only">Open main menu</span>
-              <Menu className="h-6 w-6" aria-hidden="true" />
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <FaBars className="h-6 w-6" />
+              )}
             </button>
           </div>
         </nav>
@@ -262,13 +343,75 @@ export default function Header() {
                 </button>
               </div>
               <div className="mt-6 flow-root">
-                <div className="-my-6 divide-y divide-gray-800">
+                <div className="-my-6 divide-y divide-gray-700">
                   <div className="space-y-2 py-6">
+                    {!user ? (
+                      /* Login/Signup buttons when not logged in */
+                      <div className="flex flex-col space-y-3 mb-6">
+                        <Link
+                          href="/login"
+                          className="w-full py-3 px-4 text-center font-medium bg-[#f3e17b] text-black rounded-lg hover:bg-[#dac968] transition-colors"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Log in
+                        </Link>
+                        <Link
+                          href="/signup"
+                          className="w-full py-3 px-4 text-center font-medium border border-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Sign up
+                        </Link>
+                      </div>
+                    ) : (
+                      /* User info when logged in */
+                      <div className="flex flex-col space-y-3 mb-6">
+                        <div className="flex items-center space-x-3 px-3 py-2">
+                          {user.image ? (
+                            <img 
+                              src={user.image} 
+                              alt={user.name || 'User'}
+                              className="h-10 w-10 rounded-full object-cover"
+                            />
+                          ) : (
+                            <div className="h-10 w-10 rounded-full bg-[#f3e17b] flex items-center justify-center text-black font-bold">
+                              {user.name?.charAt(0).toUpperCase()}
+                            </div>
+                          )}
+                          <div>
+                            <p className="text-white font-medium">{user.name}</p>
+                            <p className="text-gray-400 text-sm">{user.email}</p>
+                          </div>
+                        </div>
+                        <Link
+                          href={`/${user.role}-dashboard`}
+                          className="w-full py-3 px-4 text-center font-medium bg-[#f3e17b] text-black rounded-lg hover:bg-[#dac968] transition-colors"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Dashboard
+                        </Link>
+                        <button
+                          onClick={() => {
+                            handleLogout();
+                            setMobileMenuOpen(false);
+                          }}
+                          className="w-full py-3 px-4 text-center font-medium border border-red-900 text-red-400 rounded-lg hover:bg-red-900/30 transition-colors"
+                        >
+                          Log out
+                        </button>
+                      </div>
+                    )}
+                    
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                        className={cn(
+                          "block rounded-lg px-3 py-2 text-base font-medium",
+                          pathname === item.href || item.active
+                            ? "text-[#f3e17b]" 
+                            : "text-gray-300 hover:bg-gray-900"
+                        )}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {item.name}
@@ -277,32 +420,25 @@ export default function Header() {
                   </div>
                   <div className="py-6">
                     <Link
-                      href="/login"
-                      className="block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-900"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Log in
-                    </Link>
-                    <Link
-                      href="/signup"
-                      className="block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-900"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Sign up
-                    </Link>
-                    <Link
-                      href="/become-a-host"
-                      className="block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                      href="/agent-signup"
+                      className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-gray-900"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Become a Host
                     </Link>
                     <Link
-                      href="/help"
-                      className="block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-900"
+                      href="/host-an-experience"
+                      className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-gray-900"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Help
+                      Host an Experience
+                    </Link>
+                    <Link
+                      href="/help"
+                      className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-gray-900"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Help Center
                     </Link>
                   </div>
                 </div>
