@@ -81,9 +81,9 @@ export default function About() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900">Founded in 1985</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">Founded in 1999</h3>
                   <p className="mt-1 text-sm text-gray-600">
-                    Over 35 years of educational excellence and community impact.
+                    Over 25 years of educational excellence and community impact.
                   </p>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default function About() {
           >
             <motion.div variants={item} className="flex items-center">
               <div className="h-1 w-12 rounded bg-secondary-400"></div>
-              <span className="text-sm font-semibold uppercase tracking-wide text-yellow-200 -ml-12 ">About EduLand</span>
+              <span className="text-sm font-semibold uppercase tracking-wide text-yellow-200 -ml-12 ">About Edu Land Schools</span>
             </motion.div>
             
             <motion.h2 
@@ -114,7 +114,7 @@ export default function About() {
               variants={item}
               className="mt-6 text-lg leading-8 text-white"
             >
-              EduLand is a premier K-12 independent school dedicated to providing a transformative educational experience. Our rigorous academic program, combined with a focus on character development, prepares students to excel in college and lead meaningful lives.
+              Edu Land Schools is a premier K-12 independent school dedicated to providing a transformative educational experience. Our rigorous academic program, combined with a focus on character development, prepares students to excel in college and lead meaningful lives.
             </motion.p>
             
             <motion.ul variants={item} className="mt-8 space-y-3 text-yellow-200">
