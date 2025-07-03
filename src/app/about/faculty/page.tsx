@@ -2,7 +2,7 @@
 
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
-import { Users, Award, GraduationCap, Star, Globe, BookOpen, Target, Heart, Lightbulb, Shield, ArrowRight, Mail, Phone, MapPin, Calendar, Trophy, Building2 } from "lucide-react";
+import { Users, GraduationCap, Globe, MapPin, Calendar, ArrowRight } from "lucide-react";
 import { colors, theme } from "@/utils/colors";
 
 const leadershipTeam = [
@@ -12,7 +12,7 @@ const leadershipTeam = [
     image: "/images/testimonials/sarah.jpg",
     qualifications: ["PhD Educational Psychology (Cambridge)", "MEd Curriculum Development (Oxford)", "BSc Psychology (University of Lagos)"],
     experience: "30+ years of educational leadership",
-    description: "Dr. Adebayo brings over 30 years of educational leadership experience to EduLand. A Cambridge University alumna with a PhD in Educational Psychology, she previously served as Academic Director at prestigious international schools in London and Singapore before returning to Nigeria to establish EduLand.",
+    description: "Dr. Adebayo brings over 30 years of educational leadership experience to Edu Land Schools. A Cambridge University alumna with a PhD in Educational Psychology, she previously served as Academic Director at prestigious international schools in London and Singapore before returning to Nigeria to establish Edu Land Schools.",
     achievements: ["Cambridge International School status", "IB World School authorization", "Multiple educational awards"],
     color: colors.mint[600]
   },
@@ -22,7 +22,7 @@ const leadershipTeam = [
     image: "/images/testimonials/michael.jpg",
     qualifications: ["MA Educational Leadership (University of Melbourne)", "PGCE Secondary Education (University of London)", "BSc Mathematics (Imperial College London)"],
     experience: "25 years of international education",
-    description: "With 25 years of international education experience across four continents, Mr. Richardson joined EduLand in 2015. His expertise in curriculum development and school leadership has been instrumental in achieving our 98% university acceptance rate.",
+    description: "With 25 years of international education experience across four continents, Mr. Richardson joined Edu Land Schools in 2015. His expertise in curriculum development and school leadership has been instrumental in achieving our 98% university acceptance rate.",
     achievements: ["98% university acceptance rate", "IB and Cambridge programme implementation", "International school leadership"],
     color: colors.mint[500]
   },
@@ -228,7 +228,7 @@ export default function AboutFacultyPage() {
                 className="text-xl leading-8 max-w-4xl mx-auto mb-8"
                 style={{ color: theme.textMuted }}
               >
-                Meet the exceptional educators and leaders who drive EduLand's commitment to academic excellence and student success.
+                Meet the exceptional educators and leaders who drive Edu Land School&apos;s commitment to academic excellence and student success.
               </motion.p>
 
               {/* Faculty Stats */}
@@ -238,7 +238,7 @@ export default function AboutFacultyPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                {facultyStats.map((stat, index) => {
+                {facultyStats.map((stat) => {
                   const IconComponent = stat.icon;
                   return (
                     <div
@@ -298,7 +298,7 @@ export default function AboutFacultyPage() {
                 className="text-lg leading-8 max-w-3xl mx-auto"
                 style={{ color: theme.textMuted }}
               >
-                The visionary leaders who guide EduLand's mission and ensure our continued success
+                The visionary leaders who guide Edu Land Schools's mission and ensure our continued success
               </motion.p>
             </motion.div>
 

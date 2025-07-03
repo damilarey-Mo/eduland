@@ -51,10 +51,7 @@ export default function EducationLevels() {
     },
   };
 
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
+
 
   const cardVariants = {
     hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -83,7 +80,7 @@ export default function EducationLevels() {
             style={{ color: theme.textMuted }}
           >
             Our comprehensive educational journey from early childhood to university preparation, 
-            designed to nurture every stage of your child's development.
+            designed to nurture every stage of your child&apos;s development.
           </motion.p>
         </motion.div>
 
@@ -95,7 +92,7 @@ export default function EducationLevels() {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {educationLevels.map((level, index) => {
+          {educationLevels.map((level) => {
             const IconComponent = level.icon;
             return (
               <motion.div

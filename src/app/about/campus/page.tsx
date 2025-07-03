@@ -2,7 +2,7 @@
 
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
-import { Building2, Globe, Star, GraduationCap, Award, ArrowRight, MapPin, Users, Calendar, Trophy, Lightbulb, Heart, Shield, Leaf, Wifi, BookOpen, Microscope, Palette, Dumbbell, Waves, CircleDot, TreePine, Sun, Droplets, Recycle } from "lucide-react";
+import { Building2, MapPin, Users, Heart, Shield, Wifi, BookOpen, Microscope, Palette, Dumbbell, Waves, TreePine, Sun, Droplets, Recycle, ArrowRight } from "lucide-react";
 import { colors, theme } from "@/utils/colors";
 
 const campusStats = [
@@ -225,7 +225,7 @@ export default function AboutCampusPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                {campusStats.map((stat, index) => {
+                {campusStats.map((stat) => {
                   const IconComponent = stat.icon;
                   return (
                     <div
@@ -296,7 +296,7 @@ export default function AboutCampusPage() {
               whileInView="show"
               viewport={{ once: true }}
             >
-              {mainFacilities.map((facility, index) => {
+              {mainFacilities.map((facility) => {
                 const IconComponent = facility.icon;
                 return (
                   <motion.div
@@ -402,7 +402,7 @@ export default function AboutCampusPage() {
               whileInView="show"
               viewport={{ once: true }}
             >
-              {recreationalFacilities.map((facility, index) => {
+              {recreationalFacilities.map((facility) => {
                 const IconComponent = facility.icon;
                 return (
                   <motion.div
@@ -504,7 +504,7 @@ export default function AboutCampusPage() {
               whileInView="show"
               viewport={{ once: true }}
             >
-              {residentialFacilities.map((facility, index) => {
+              {residentialFacilities.map((facility) => {
                 const IconComponent = facility.icon;
                 return (
                   <motion.div
@@ -610,7 +610,7 @@ export default function AboutCampusPage() {
               whileInView="show"
               viewport={{ once: true }}
             >
-              {sustainabilityInitiatives.map((initiative, index) => {
+              {sustainabilityInitiatives.map((initiative) => {
                 const IconComponent = initiative.icon;
                 return (
                   <motion.div
@@ -712,7 +712,7 @@ export default function AboutCampusPage() {
               whileInView="show"
               viewport={{ once: true }}
             >
-              {campusFeatures.map((feature, index) => {
+              {campusFeatures.map((feature) => {
                 const IconComponent = feature.icon;
                 return (
                   <motion.div
