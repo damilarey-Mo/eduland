@@ -9,7 +9,7 @@ const timelineEvents = [
   {
     year: "1998",
     title: "Foundation",
-    description: "EduLand International Schools founded with 45 students in a single campus",
+    description: "Edu Land Schools founded with 45 students in a single campus",
     icon: Building2,
     color: colors.mint[300],
     achievements: ["First campus established", "45 founding students", "Cambridge curriculum adoption"]
@@ -91,7 +91,7 @@ const founderStory = {
   name: "Dr. Margaret Adebayo",
   role: "Founder & Executive Chairman",
   image: "/images/testimonials/sarah.jpg", // Using existing image as placeholder
-  story: "A Cambridge University alumna with a PhD in Educational Psychology, Dr. Adebayo previously served as Academic Director at prestigious international schools in London and Singapore before returning to Nigeria to establish EduLand.",
+  story: "A Cambridge University alumna with a PhD in Educational Psychology, Dr. Adebayo previously served as Academic Director at prestigious international schools in London and Singapore before returning to Nigeria to establish Edu Land Schools.",
   achievements: [
     "PhD Educational Psychology (Cambridge)",
     "MEd Curriculum Development (Oxford)",
@@ -173,7 +173,7 @@ export default function AboutHistoryPage() {
                 className="text-xl leading-8 max-w-4xl mx-auto mb-8"
                 style={{ color: theme.textMuted }}
               >
-                From a pioneering vision in 1998 to Nigeria's premier international school system, discover the remarkable journey that shaped EduLand's legacy of educational excellence.
+                From a pioneering vision in 1998 to Nigeria's premier international school system, discover the remarkable journey that shaped Edu Land's legacy of educational excellence.
               </motion.p>
 
               {/* Key Milestones */}
@@ -249,7 +249,7 @@ export default function AboutHistoryPage() {
                 className="text-lg leading-8 max-w-3xl mx-auto"
                 style={{ color: theme.textMuted }}
               >
-                A timeline of key milestones that shaped EduLand's evolution into a world-class educational institution
+                A timeline of key milestones that shaped Edu Land's evolution into a world-class educational institution
               </motion.p>
             </motion.div>
 
@@ -372,7 +372,7 @@ export default function AboutHistoryPage() {
                 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl font-display mb-6"
                 style={{ color: theme.text }}
               >
-                The Visionary Behind EduLand
+                The Visionary Behind Edu Land Schools
               </motion.h2>
               <motion.p 
                 className="text-lg leading-8 max-w-3xl mx-auto"
@@ -477,7 +477,7 @@ export default function AboutHistoryPage() {
                 className="text-lg leading-8 max-w-3xl mx-auto"
                 style={{ color: theme.textMuted }}
               >
-                The lasting impact of EduLand's commitment to educational excellence and innovation
+                The lasting impact of Edu Land's commitment to educational excellence and innovation
               </motion.p>
             </motion.div>
 

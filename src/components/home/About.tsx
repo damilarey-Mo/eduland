@@ -112,12 +112,12 @@ export default function About() {
             
             <motion.p 
               variants={item}
-              className="mt-6 text-lg leading-8 text-gray-600"
+              className="mt-6 text-lg leading-8 text-white"
             >
               EduLand is a premier K-12 independent school dedicated to providing a transformative educational experience. Our rigorous academic program, combined with a focus on character development, prepares students to excel in college and lead meaningful lives.
             </motion.p>
             
-            <motion.ul variants={item} className="mt-8 space-y-3 text-gray-600">
+            <motion.ul variants={item} className="mt-8 space-y-3 text-yellow-200">
               {[
                 "Student-centered approach fostering curiosity and critical thinking",
                 "Dedicated faculty committed to academic excellence and mentorship",

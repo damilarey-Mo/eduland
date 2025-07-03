@@ -149,14 +149,14 @@ export default function AboutPage() {
                 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl font-display mb-6"
                 style={{ color: theme.text }}
               >
-                About EduLand International Schools
+                About Edu Land Schools
               </motion.h1>
               
               <motion.p 
                 className="text-xl leading-8 max-w-4xl mx-auto mb-8"
                 style={{ color: theme.textMuted }}
               >
-                Founded in 1998, EduLand International Schools began as a pioneering educational institution with a bold vision: to create a world-class learning environment that prepares students not just for academic success, but for meaningful global citizenship.
+                Founded in 1998, Edu Land Schools began as a pioneering educational institution with a bold vision: to create a world-class learning environment that prepares students not just for academic success, but for meaningful global citizenship.
               </motion.p>
 
               {/* Quick Stats */}
@@ -349,7 +349,7 @@ export default function AboutPage() {
                   className="text-base leading-relaxed"
                   style={{ color: theme.textMuted }}
                 >
-                  We envision a future where EduLand graduates are recognized globally for their academic prowess, ethical leadership, and positive impact on society.
+                  We envision a future where Edu Land graduates are recognized globally for their academic prowess, ethical leadership, and positive impact on society.
                 </p>
               </motion.div>
             </motion.div>
@@ -552,7 +552,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Why Choose EduLand */}
+        {/* Why Choose Edu Land */}
         <section className="py-20 lg:py-24" style={{ backgroundColor: theme.alpha(colors.vanilla[400], 0.02) }}>
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <motion.div 
@@ -566,13 +566,13 @@ export default function AboutPage() {
                 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl font-display mb-6"
                 style={{ color: theme.text }}
               >
-                Why Choose EduLand?
+                Why Choose Edu Land Schools?
               </motion.h2>
               <motion.p 
                 className="text-lg leading-8 max-w-3xl mx-auto"
                 style={{ color: theme.textMuted }}
               >
-                Choosing EduLand International Schools means choosing excellence, innovation, and a future of unlimited possibilities
+                Choosing Edu Land means choosing excellence, innovation, and a future of unlimited possibilities
               </motion.p>
             </motion.div>
 
@@ -644,7 +644,7 @@ export default function AboutPage() {
                 className="text-lg leading-8 max-w-3xl mx-auto"
                 style={{ color: theme.textMuted }}
               >
-                Ready to join the EduLand community? Get in touch with us today.
+                Ready to join the Edu Land community? Get in touch with us today.
               </motion.p>
             </motion.div>
 

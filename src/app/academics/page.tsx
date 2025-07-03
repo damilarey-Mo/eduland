@@ -148,7 +148,7 @@ export default function AcademicsPage() {
                 className="text-lg leading-8 max-w-3xl mx-auto"
                 style={{ color: theme.textMuted }}
               >
-                At Eduland School, we believe education extends far beyond textbooks and examinations. Our curriculum is a standards-based sequence of planned experiences where students practice and achieve proficiency in content and applied learning skills, designed to foster critical thinking, creativity, and character development.
+                At Edu Land School, we believe education extends far beyond textbooks and examinations. Our curriculum is a standards-based sequence of planned experiences where students practice and achieve proficiency in content and applied learning skills, designed to foster critical thinking, creativity, and character development.
               </motion.p>
             </motion.div>
           </div>

@@ -294,7 +294,7 @@ export default function AboutMissionPage() {
                   className="text-lg leading-relaxed"
                   style={{ color: theme.textMuted }}
                 >
-                  We envision a future where EduLand graduates are recognized globally for their academic prowess, ethical leadership, and positive impact on society. Our vision drives every decision we make, from curriculum design to faculty recruitment to facility development.
+                  We envision a future where Edu Land graduates are recognized globally for their academic prowess, ethical leadership, and positive impact on society. Our vision drives every decision we make, from curriculum design to faculty recruitment to facility development.
                 </p>
               </motion.div>
             </motion.div>

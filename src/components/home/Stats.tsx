@@ -63,7 +63,7 @@ export default function Stats() {
               className="mt-6 text-lg leading-8 max-w-xl mx-auto"
               style={{ color: theme.textMuted }}
             >
-              Our commitment to excellence is reflected in our outcomes. Here's how EduLand makes a difference in the lives of our students.
+              Our commitment to excellence is reflected in our outcomes. Here's how Edu Land makes a difference in the lives of our students.
             </motion.p>
           </div>
 

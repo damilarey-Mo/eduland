@@ -238,7 +238,7 @@ export default function Admissions() {
                 className="text-xl leading-8 max-w-3xl mx-auto mb-8"
                 style={{ color: theme.textMuted }}
               >
-                Begin your journey at EduLand, where we nurture academic excellence, character development, and leadership skills in a supportive and innovative environment.
+                Begin your journey at Edu Land Schools, where we nurture academic excellence, character development, and leadership skills in a supportive and innovative environment.
               </motion.p>
 
               <motion.div 
@@ -296,7 +296,7 @@ export default function Admissions() {
                 className="text-lg leading-8 max-w-3xl mx-auto"
                 style={{ color: theme.textMuted }}
               >
-              Follow these simple steps to begin your journey at EduLand
+              Follow these simple steps to begin your journey at Edu Land Schools
               </motion.p>
             </motion.div>
 

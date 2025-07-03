@@ -6,34 +6,34 @@ import { colors, theme } from '@/utils/colors';
 
 const educationLevels = [
   {
-    title: "Creche & Nursery",
-    subtitle: "Ages 6 months - 3 years",
+    title: "Early Childhood",
+    subtitle: "Ages 3-5 years",
     tagline: "First Steps to Lifelong Learning",
-    features: ["Play-based learning", "Montessori approach"],
+    features: ["Play-based learning", "Montessori approach", "Social development"],
     icon: Baby,
     color: colors.mint[300]
   },
   {
-    title: "Primary School",
-    subtitle: "Ages 4-11",
+    title: "Elementary School",
+    subtitle: "Grades K-5 (Ages 5-11)",
     tagline: "Building Strong Foundations",
-    features: ["Cambridge curriculum", "STEM focus"],
+    features: ["Common Core curriculum", "STEM focus", "Reading & Math"],
     icon: BookOpen,
     color: colors.mint[400]
   },
   {
-    title: "Secondary School",
-    subtitle: "Ages 12-16",
+    title: "Middle School",
+    subtitle: "Grades 6-8 (Ages 11-14)",
     tagline: "Developing Critical Thinkers",
-    features: ["IGCSE preparation", "Leadership programs"],
+    features: ["Core subjects", "Elective courses", "Leadership programs"],
     icon: GraduationCap,
     color: colors.mint[500]
   },
   {
-    title: "College Prep",
-    subtitle: "Ages 17-18",
+    title: "High School",
+    subtitle: "Grades 9-12 (Ages 14-18)",
     tagline: "University & Career Ready",
-    features: ["A-Levels", "IB program", "University counseling"],
+    features: ["College prep courses", "AP/IB programs", "Career counseling"],
     icon: Users,
     color: colors.mint[600]
   }

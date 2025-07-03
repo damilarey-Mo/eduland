@@ -301,7 +301,7 @@ export default function TechnologyPage() {
                 Technology Vision
               </motion.h2>
               <motion.p className="text-lg leading-8 max-w-3xl mx-auto" style={{ color: theme.textMuted }}>
-                Technology is at the center of our lives in most environments, and the classroom is no exception. At Eduland School, we integrate cutting-edge technology to enhance learning experiences and prepare students for an increasingly digital world.
+                Technology is at the center of our lives in most environments, and the classroom is no exception. At Edu Land, we integrate cutting-edge technology to enhance learning experiences and prepare students for an increasingly digital world.
               </motion.p>
             </motion.div>
           </div>

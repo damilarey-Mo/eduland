@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Logo from './Logo';
 import { useState } from 'react';
 
 const navigation = {
@@ -92,9 +93,10 @@ export default function Footer() {
           <div className="space-y-8">
             <div className="flex items-center space-x-3">
               <div className="h-10 w-10 rounded-full bg-primary-300 flex items-center justify-center">
-                <span className="text-gray-800 font-display font-bold text-xl">E</span>
               </div>
-              <span className="text-2xl font-display font-bold text-white">EduLand</span>
+             <Logo>
+
+             </Logo>
             </div>
             <p className="text-sm leading-6 text-gray-300 max-w-xs">
               Empowering students to excel academically, develop character, and become leaders who make a positive impact on the world.
@@ -184,7 +186,7 @@ export default function Footer() {
         </div>
         <div className="mt-16 border-t border-gray-800/50 pt-8 sm:mt-20 md:flex md:items-center md:justify-between">
           <p className="text-xs leading-5 text-gray-400">
-            &copy; {new Date().getFullYear()} EduLand. All rights reserved.
+            &copy; {new Date().getFullYear()} Edu Land. All rights reserved.
           </p>
           <div className="mt-4 flex space-x-6 md:mt-0">
             <Link href="/privacy" className="text-xs leading-5 text-gray-400 hover:text-gray-300">

@@ -775,7 +775,7 @@ export default function AboutCampusPage() {
                 className="text-lg leading-8 max-w-3xl mx-auto mb-8"
                 style={{ color: theme.textMuted }}
               >
-                Schedule a campus tour to see our world-class facilities and experience the EduLand difference firsthand
+                Schedule a campus tour to see our world-class facilities and experience the Edu Land difference firsthand
               </motion.p>
               <motion.button 
                 className="group relative overflow-hidden rounded-full px-8 py-4 text-base font-semibold shadow-lg hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 transition-all transform-gpu hover:scale-105"

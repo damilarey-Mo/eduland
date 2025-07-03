@@ -23,7 +23,7 @@ const posts = [
   },
   {
     id: 2,
-    title: 'EduLand Athletics Team Wins Regional Championship',
+    title: 'Edu Land Athletics Team Wins Regional Championship',
     href: '/news/athletics-championship',
     description:
       'Congratulations to our Athletics team for their outstanding performance and bringing home the Regional Championship trophy. The team showed exceptional sportsmanship and determination.',
@@ -150,7 +150,7 @@ export default function News() {
             style={{ color: theme.textMuted }}
           >
             Stay updated with the latest happenings, achievements, and exciting developments 
-            at EduLand that shape our vibrant learning community.
+            at Edu Land Schools that shape our vibrant learning community.
           </motion.p>
         </motion.div>
 

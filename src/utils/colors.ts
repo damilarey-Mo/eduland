@@ -1,5 +1,5 @@
 // src/utils/colors.ts
-// Central color definitions for the EduLand theme with dark vanilla aesthetic
+// Central color definitions for the Edu Land theme with dark vanilla aesthetic
 
 // Export a colors object with all our theme colors
 export const colors = {

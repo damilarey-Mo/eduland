@@ -90,7 +90,7 @@ export default function CampusLife() {
             className="text-lg leading-8 max-w-3xl mx-auto"
             style={{ color: theme.textMuted }}
           >
-            Experience the vibrant campus life at EduLand with modern facilities, diverse student activities, 
+            Experience the vibrant campus life at Edu Land with modern facilities, diverse student activities, 
             outstanding sports achievements, and rich cultural events that shape well-rounded individuals.
           </motion.p>
         </motion.div>
