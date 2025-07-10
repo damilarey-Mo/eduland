@@ -581,7 +581,7 @@ export default function AboutHistoryPage() {
                 className="text-lg leading-8 max-w-3xl mx-auto mb-8"
                 style={{ color: theme.textMuted }}
               >
-                Join the next chapter of EduLand's journey as we continue to shape the future of education
+                Join the next chapter of Edu Land's journey as we continue to shape the future of education
               </motion.p>
               <motion.button 
                 className="group relative overflow-hidden rounded-full px-8 py-4 text-base font-semibold shadow-lg hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 transition-all transform-gpu hover:scale-105"

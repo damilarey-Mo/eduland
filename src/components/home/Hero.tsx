@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, GraduationCap, BookOpen, Users, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { colors, theme } from '@/utils/colors';
 
 const carouselImages = [
@@ -124,10 +124,6 @@ export default function Hero() {
               borderColor: theme.alpha(theme.secondary, 0.3),
               boxShadow: `0 4px 12px ${theme.alpha(theme.secondary, 0.2)}`
             }}>
-            <span className="flex h-8 w-8 items-center justify-center rounded-full" 
-              style={{ backgroundColor: theme.alpha(colors.vanilla[400], 0.3) }}>
-              <GraduationCap className="h-4 w-4" style={{ color: theme.primary }} />
-            </span>
             <span className="text-sm font-semibold" style={{ color: theme.primary }}>
               Enrollment Open for 2025-26 Session
             </span>
@@ -155,14 +151,14 @@ export default function Hero() {
               className="mt-6 text-lg leading-8 max-w-lg"
               style={{ color: theme.textMuted }}
             >
-              EduLand provides a transformative learning experience that nurtures academic excellence, character development, and leadership skills in a supportive community.
+              Edu Land Schools provides a transformative learning experience that nurtures academic excellence, character development, and leadership skills in a supportive community.
             </motion.p>
           </motion.div>
 
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
             {/* Image Carousel */}
             <div 
-              className="relative h-80 overflow-hidden sm:h-[400px] md:h-[500px] lg:h-[520px] w-full max-w-lg"
+              className="relative h-80 overflow-hidden sm:h-[400px] md:h-[500px] lg:h-[480px] w-[700px]"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               style={{ 
@@ -295,10 +291,6 @@ export default function Hero() {
               }}
             >
               <div className="flex justify-center mb-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full" 
-                  style={{ backgroundColor: theme.alpha(theme.secondary, 0.15) }}>
-                  <GraduationCap className="h-6 w-6" style={{ color: theme.secondary }} />
-                </div>
               </div>
               <dt className="text-lg font-semibold leading-7 mb-3" style={{ color: theme.textSecondary }}>
                 Academic Excellence
@@ -318,10 +310,7 @@ export default function Hero() {
               }}
             >
               <div className="flex justify-center mb-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full" 
-                  style={{ backgroundColor: theme.alpha(theme.secondary, 0.15) }}>
-                  <BookOpen className="h-6 w-6" style={{ color: theme.secondary }} />
-                </div>
+                
               </div>
               <dt className="text-lg font-semibold leading-7 mb-3" style={{ color: theme.textSecondary }}>
                 Holistic Development
@@ -341,10 +330,7 @@ export default function Hero() {
               }}
             >
               <div className="flex justify-center mb-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full" 
-                  style={{ backgroundColor: theme.alpha(theme.secondary, 0.15) }}>
-                  <Users className="h-6 w-6" style={{ color: theme.secondary }} />
-                </div>
+                
               </div>
               <dt className="text-lg font-semibold leading-7 mb-3" style={{ color: theme.textSecondary }}>
                 Supportive Community
@@ -379,14 +365,12 @@ export default function Hero() {
                 style={{ backgroundColor: theme.secondaryDark }}
               ></span>
             </Link>
-            
             <Link 
               href="/about"
               className="group text-base font-semibold leading-6 flex items-center space-x-2 px-6 py-4 rounded-full border-2 transition-all transform-gpu hover:scale-105"
               style={{ 
-                color: theme.text,
-                borderColor: theme.alpha(theme.secondary, 0.3),
-                backgroundColor: theme.alpha(colors.vanilla[400], 0.05)
+                backgroundColor: theme.primary,
+                color: theme.backgroundDark 
               }}
             >
               <span>Learn more</span>

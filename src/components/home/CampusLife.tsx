@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Building2, Users, Trophy, Music, ArrowRight } from 'lucide-react';
 import { colors, theme } from '@/utils/colors';
+import { ArrowRight } from 'lucide-react';
 
 const campusHighlights = [
   {
@@ -11,7 +11,6 @@ const campusHighlights = [
     subtitle: "State-of-the-Art Infrastructure",
     description: "Cutting-edge laboratories, smart classrooms, and world-class sports facilities that provide the perfect environment for learning and growth.",
     features: ["Smart Classrooms", "Science Labs", "Sports Complex", "Library"],
-    icon: Building2,
     color: colors.mint[400],
     image: "/images/school-building.jpg"
   },
@@ -21,7 +20,6 @@ const campusHighlights = [
     subtitle: "Clubs & Organizations",
     description: "Over 50 student-led clubs and organizations covering academics, arts, technology, and community service.",
     features: ["Academic Clubs", "Arts & Culture", "Tech Innovation", "Community Service"],
-    icon: Users,
     color: colors.mint[500],
     image: "/images/students-1.jpg"
   },
@@ -31,9 +29,8 @@ const campusHighlights = [
     subtitle: "Excellence in Athletics",
     description: "Championship-winning teams across multiple sports with state and national level recognition.",
     features: ["State Champions", "National Titles", "Individual Records", "Team Spirit"],
-    icon: Trophy,
     color: colors.mint[600],
-    image: "/images/athletics.jpg"
+    image: "/images/sportwinner.jpg"
   },
   {
     id: 4,
@@ -41,9 +38,8 @@ const campusHighlights = [
     subtitle: "Celebrations & Performances",
     description: "Annual cultural festivals, music concerts, drama performances, and international celebrations.",
     features: ["Cultural Festivals", "Music Concerts", "Drama Performances", "International Day"],
-    icon: Music,
     color: colors.mint[300],
-    image: "/images/celevration.jpg"
+    image: "/images/cultural.jpg"
   }
 ];
 
@@ -104,7 +100,6 @@ export default function CampusLife() {
           viewport={{ once: true }}
         >
           {campusHighlights.map((highlight, index) => {
-            const IconComponent = highlight.icon;
             return (
               <motion.div
                 key={highlight.id}
@@ -130,22 +125,6 @@ export default function CampusLife() {
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                  
-                  {/* Icon Overlay */}
-                  <div className="absolute top-4 right-4">
-                    <div 
-                      className="flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 group-hover:scale-110"
-                      style={{ 
-                        backgroundColor: theme.alpha(highlight.color, 0.9),
-                        border: `2px solid ${highlight.color}`
-                      }}
-                    >
-                      <IconComponent 
-                        className="h-6 w-6" 
-                        style={{ color: 'white' }} 
-                      />
-                    </div>
-                  </div>
                 </div>
 
                 {/* Content */}

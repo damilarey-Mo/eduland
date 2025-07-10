@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Award, GraduationCap, Trophy, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight} from 'lucide-react';
 import { colors, theme } from '@/utils/colors';
 
 const successStories = [
@@ -12,19 +12,17 @@ const successStories = [
     title: "Harvard University",
     subtitle: "Class of 2024",
     description: "Sarah Johnson accepted to Harvard University with full scholarship for Computer Science",
-    icon: GraduationCap,
     color: colors.mint[400],
-    image: "/images/students-1.jpg"
+    image: "/images/harvard.jpg"
   },
   {
     id: 2,
     type: "Alumni Achievement",
     title: "Tech Entrepreneur",
-    subtitle: "Class of 2020",
+    subtitle: "Class of 2018",
     description: "Michael Chen founded successful AI startup, raised $5M in funding",
-    icon: Star,
     color: colors.mint[500],
-    image: "/images/student in lab.jpg"
+    image: "/images/startupfounder.jpg"
   },
   {
     id: 3,
@@ -32,9 +30,8 @@ const successStories = [
     title: "National Science Award",
     subtitle: "2024 Winner",
     description: "Emily Rodriguez won prestigious National Science Competition for innovative research",
-    icon: Award,
     color: colors.mint[600],
-    image: "/images/science-fair.jpg"
+    image: "/images/internationalaward.jpg"
   },
   {
     id: 4,
@@ -42,19 +39,17 @@ const successStories = [
     title: "International Math Olympiad",
     subtitle: "Gold Medalist",
     description: "David Kim secured gold medal at International Mathematics Olympiad",
-    icon: Trophy,
     color: colors.mint[300],
-    image: "/images/students-2.jpg"
+    image: "/images/Mathsolypiad.jpg"
   },
   {
     id: 5,
-    type: "University Acceptance",
-    title: "Stanford University",
-    subtitle: "Class of 2024",
-    description: "James Wilson accepted to Stanford University for Engineering",
-    icon: GraduationCap,
+    type: "Job Placement",
+    title: "Google",
+    subtitle: "Class of 2019",
+    description: "James Wilson joined Google as a software engineer",
     color: colors.mint[400],
-    image: "/images/hero-students.jpg"
+    image: "/images/younggoogleengineer.jpg"
   },
   {
     id: 6,
@@ -62,9 +57,8 @@ const successStories = [
     title: "Medical Research",
     subtitle: "Class of 2019",
     description: "Lisa Park published breakthrough research in medical journal",
-    icon: Star,
     color: colors.mint[500],
-    image: "/images/student at science fair.jpg"
+    image: "/images/medicalresearch.jpg"
   }
 ];
 
@@ -123,7 +117,7 @@ export default function SuccessStories() {
             style={{ color: theme.textMuted }}
           >
             Celebrating our students' achievements in university acceptances, alumni success, 
-            awards, and competition victories that showcase the excellence of EduLand education.
+            awards, and competition victories that showcase the excellence of Edu Land education.
           </motion.p>
         </motion.div>
 
@@ -161,25 +155,14 @@ export default function SuccessStories() {
                   
                   {/* Content */}
                   <div className="relative h-full flex items-center">
-                    <div className="max-w-2xl px-8 lg:px-12">
+                    <div className="max-w-2xl px-8 lg:px-24">
                       <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                         className="flex items-center space-x-3 mb-4"
                       >
-                        <div 
-                          className="flex h-12 w-12 items-center justify-center rounded-full"
-                          style={{ backgroundColor: theme.alpha(successStories[currentIndex].color, 0.2) }}
-                        >
-                          {(() => {
-                            const IconComponent = successStories[currentIndex].icon;
-                            return <IconComponent 
-                              className="h-6 w-6" 
-                              style={{ color: successStories[currentIndex].color }} 
-                            />;
-                          })()}
-                        </div>
+                        
                         <span 
                           className="text-sm font-semibold uppercase tracking-wider"
                           style={{ color: successStories[currentIndex].color }}

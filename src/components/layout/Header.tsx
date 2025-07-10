@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo';
+import { colors, theme } from '@/utils/colors';
 
 interface SubmenuItem {
   name: string;
@@ -73,6 +74,15 @@ export default function Header() {
     setActiveMenu(null);
   }, [pathname]);
 
+  // Check if current path matches navigation item or its submenu
+  const isActivePath = (item: NavigationItem) => {
+    if (pathname === item.href) return true;
+    if (item.submenu) {
+      return item.submenu.some(subItem => pathname === subItem.href);
+    }
+    return false;
+  };
+
   return (
     <header className={cn(
       "sticky top-0 z-50 transition-all duration-300", 
@@ -101,77 +111,100 @@ export default function Header() {
           </button>
         </div>
         
-        <div className="hidden lg:flex lg:gap-x-8">
-          {navigation.map((item) => (
-            <div
-              key={item.name}
-              className="relative"
-              onMouseEnter={() => item.submenu && setActiveMenu(item.name)}
-              onMouseLeave={() => setActiveMenu(null)}
-            >
-              <Link
-                href={item.href}
-                className={cn(
-                  "text-sm font-semibold leading-6 transition-colors relative group flex items-center gap-1 py-2",
-                  pathname === item.href 
-                    ? "text-green-300" 
-                    : "text-gray-800 hover:text-secondary-500"
-                )}
+        {/* Desktop Navigation - Redesigned like testimonial filter */}
+        <div className="hidden lg:flex lg:gap-x-2">
+          <div className="inline-flex rounded-full p-1" style={{ backgroundColor: theme.alpha(colors.vanilla[400], 0.1) }}>
+            {navigation.map((item) => (
+              <div
+                key={item.name}
+                className="relative"
+                onMouseEnter={() => item.submenu && setActiveMenu(item.name)}
+                onMouseLeave={() => setActiveMenu(null)}
               >
-                {item.name}
-                {item.submenu && (
-                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${activeMenu === item.name ? 'rotate-180' : ''}`} />
-                )}
-                
-                {/* Underline effect */}
-                {pathname === item.href && (
-                  <span className="absolute bottom-0 left-0 h-0.5 w-full bg-secondary-500" />
-                )}
-              </Link>
-              
-              {/* Dropdown menu */}
-              {item.submenu && (
-                <AnimatePresence>
-                  {activeMenu === item.name && (
-                    <motion.div
-                      className="absolute left-1/2 z-10 mt-1 flex w-48 -translate-x-1/2 px-4"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <div className="w-full rounded-xl bg-yellow-200 shadow-lg ring-1 ring-gray-900/5 overflow-hidden">
-                        <div className="p-2">
-                          {item.submenu.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-secondary-500 transition-colors"
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
+                <Link
+                  href={item.href}
+                  className={cn(
+                    "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-1",
+                    isActivePath(item)
+                      ? 'text-white shadow-lg'
+                      : 'hover:bg-white/50'
                   )}
-                </AnimatePresence>
-              )}
-            </div>
-          ))}
+                  style={{
+                    backgroundColor: isActivePath(item) ? theme.secondary : 'transparent',
+                    color: isActivePath(item) ? theme.backgroundDark : theme.textMuted
+                  }}
+                >
+                  {item.name}
+                  {item.submenu && (
+                    <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${activeMenu === item.name ? 'rotate-180' : ''}`} />
+                  )}
+                </Link>
+                
+                {/* Dropdown menu */}
+                {item.submenu && (
+                  <AnimatePresence>
+                    {activeMenu === item.name && (
+                      <motion.div
+                        className="absolute left-1/2 z-10 mt-2 flex w-48 -translate-x-1/2 px-4"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div 
+                          className="w-full rounded-xl shadow-lg ring-1 ring-gray-900/5 overflow-hidden"
+                          style={{ 
+                            backgroundColor: theme.background,
+                            border: `1px solid ${theme.alpha(theme.secondary, 0.2)}`
+                          }}
+                        >
+                          <div className="p-2">
+                            {item.submenu.map((subItem) => (
+                              <Link
+                                key={subItem.name}
+                                href={subItem.href}
+                                className={cn(
+                                  "block rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                                  pathname === subItem.href
+                                    ? 'text-white'
+                                    : 'hover:bg-white/10'
+                                )}
+                                style={{
+                                  backgroundColor: pathname === subItem.href ? theme.secondary : 'transparent',
+                                  color: pathname === subItem.href ? theme.backgroundDark : theme.textMuted
+                                }}
+                              >
+                                {subItem.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
         
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link 
-            href="/" 
-            className="relative overflow-hidden rounded-full bg-secondary-400 px-4 py-2.5 text-sm font-semibold text-gray-800 shadow-sm hover:bg-secondary-500 transition-colors duration-300 inline-flex items-center group"
+            href="/login" 
+            className="relative overflow-hidden rounded-full px-4 py-2.5 text-sm font-semibold shadow-sm transition-all duration-300 inline-flex items-center group hover:scale-105"
+            style={{ 
+              backgroundColor: theme.secondary,
+              color: theme.backgroundDark
+            }}
           >
             <motion.span 
-              className="absolute inset-0 bg-secondary-500 rounded-full z-0"
+              className="absolute inset-0 rounded-full z-0"
+              style={{ backgroundColor: theme.alpha(theme.secondary, 0.8) }}
               initial={{ x: '-100%' }}
               whileHover={{ x: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             />
+            <span className="relative z-10">Enroll Now</span>
           </Link>
         </div>
       </nav>
@@ -214,7 +247,16 @@ export default function Header() {
                       <div key={item.name} className="space-y-1">
                         <Link
                           href={item.href}
-                          className="-mx-3 flex items-center justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-800 hover:bg-gray-50"
+                          className={cn(
+                            "-mx-3 flex items-center justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 transition-all duration-300",
+                            isActivePath(item)
+                              ? 'text-white shadow-lg'
+                              : 'text-gray-800 hover:bg-gray-50'
+                          )}
+                          style={{
+                            backgroundColor: isActivePath(item) ? theme.secondary : 'transparent',
+                            color: isActivePath(item) ? theme.backgroundDark : undefined
+                          }}
                           onClick={() => !item.submenu && setMobileMenuOpen(false)}
                         >
                           <span>{item.name}</span>
@@ -247,7 +289,16 @@ export default function Header() {
                                   <Link
                                     key={subItem.name}
                                     href={subItem.href}
-                                    className="block rounded-md py-2 pl-4 pr-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-secondary-500"
+                                    className={cn(
+                                      "block rounded-md py-2 pl-4 pr-3 text-sm font-medium transition-all duration-300",
+                                      pathname === subItem.href
+                                        ? 'text-white shadow-lg'
+                                        : 'text-gray-600 hover:bg-gray-50'
+                                    )}
+                                    style={{
+                                      backgroundColor: pathname === subItem.href ? theme.secondary : 'transparent',
+                                      color: pathname === subItem.href ? theme.backgroundDark : undefined
+                                    }}
                                     onClick={() => setMobileMenuOpen(false)}
                                   >
                                     {subItem.name}
@@ -263,7 +314,11 @@ export default function Header() {
                   <div className="py-6">
                     <Link
                       href="/login"
-                      className="block rounded-full px-3 py-2.5 text-base font-semibold leading-7 text-gray-800 bg-secondary-400 hover:bg-secondary-500 text-center"
+                      className="block rounded-full px-3 py-2.5 text-base font-semibold leading-7 text-center transition-all duration-300 hover:scale-105"
+                      style={{ 
+                        backgroundColor: theme.secondary,
+                        color: theme.backgroundDark
+                      }}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Enroll Now

@@ -18,23 +18,24 @@ export default function Home() {
     <Layout>
       <main>
         <ScrollAnimation direction="fade" delay={0}>
-          <section
-            className="my-8 m"
-            style={{
-              border: `2px solid ${theme.alpha(colors.mint[400], 0.18)}`,
-              background: theme.alpha(colors.vanilla[400], 0.02),
-              boxShadow: `0 4px 24px ${theme.alpha(colors.mint[400], 0.10)}`,
-              overflow: 'hidden',
-            }}
-          >
-            <Hero />
-          </section>
+        <section
+  className="my-8"
+  style={{
+    borderBottom: `2px solid ${theme.alpha(colors.mint[400], 0.18)}`,
+    background: theme.alpha(colors.vanilla[400], 0.02),
+    boxShadow: `0 4px 24px ${theme.alpha(colors.mint[400], 0.10)}`,
+    overflow: 'hidden',
+  }}
+>
+  <Hero />
+</section>
+
         </ScrollAnimation>
         <ScrollAnimation direction="up" delay={200}>
           <section
             className="my-8 -mt-10"
             style={{
-              border: `2px solid ${theme.alpha(colors.mint[500], 0.18)}`,
+              borderBottom: `2px solid ${theme.alpha(colors.mint[500], 0.18)}`,
               background: theme.alpha(colors.vanilla[400], 0.02),
               boxShadow: `0 4px 24px ${theme.alpha(colors.mint[500], 0.10)}`,
               overflow: 'hidden',
@@ -47,21 +48,21 @@ export default function Home() {
           <section
        className="my-8 -mt-10"
           style={{
-            border: `2px solid ${theme.alpha(colors.mint[600], 0.18)}`,
+            borderBottom: `2px solid ${theme.alpha(colors.mint[500], 0.18)}`,
             background: theme.alpha(colors.vanilla[400], 0.02),
-            boxShadow: `0 4px 24px ${theme.alpha(colors.mint[600], 0.10)}`,
+            boxShadow: `0 4px 24px ${theme.alpha(colors.mint[500], 0.10)}`,
             overflow: 'hidden',
           }}
         >
           <EducationLevels />
         </section>
         </ScrollAnimation>
-        <ScrollAnimation direction="left" delay={600}>
+        <ScrollAnimation direction="up" delay={600}>
           <section
        className="my-8 -mt-10"
           style={{
            
-            border: `2px solid ${theme.alpha(colors.mint[300], 0.18)}`,
+            borderBottom: `2px solid ${theme.alpha(colors.mint[300], 0.18)}`,
             background: theme.alpha(colors.vanilla[400], 0.02),
             boxShadow: `0 4px 24px ${theme.alpha(colors.mint[300], 0.10)}`,
             overflow: 'hidden',
@@ -70,7 +71,7 @@ export default function Home() {
           <Stats />
         </section>
         </ScrollAnimation>
-        <ScrollAnimation direction="right" delay={800}>
+        <ScrollAnimation direction="up" delay={800}>
           <section
        className="my-8 -mt-10"
           style={{
@@ -98,7 +99,7 @@ export default function Home() {
           <CampusLife />
         </section>
         </ScrollAnimation>
-        <ScrollAnimation direction="down" delay={1200}>
+        <ScrollAnimation direction="up" delay={1200}>
           <section
        className="my-8 -mt-10"
           style={{
@@ -112,7 +113,7 @@ export default function Home() {
           <Testimonials />
         </section>
         </ScrollAnimation>
-        <ScrollAnimation direction="fade" delay={1400}>
+        <ScrollAnimation direction="up" delay={1400}>
           <section
           className="my-8"
           style={{

@@ -33,7 +33,7 @@ export default function About() {
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="h-[500px] w-[500px] rounded-full bg-primary-50 opacity-70 blur-3xl"></div>
+          <div className="h-[500px] w-[500px] rounded-full bg-primary-50 opacity-10 blur-3xl"></div>
         </div>
         <div className="absolute top-0 right-0">
           <svg className="h-96 w-96 text-primary-100 opacity-30" viewBox="0 0 200 200" fill="none">
@@ -143,13 +143,18 @@ export default function About() {
               variants={item}
               className="mt-10"
             >
-              <Link
-                href="/about"
-                className="group inline-flex items-center gap-x-2 rounded-full bg-secondary-400 px-6 py-3 text-sm font-semibold text-gray-800 shadow-sm hover:bg-secondary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-400"
-              >
-                Learn more about us
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-              </Link>
+            <Link 
+              href="/about"
+              className="group text-base font-semibold lg:mx-48 flex items-center space-x-2 px-6 py-4 rounded-full transition-all transform-gpu hover:scale-105"
+              style={{
+                backgroundColor: theme.secondary,
+                color: theme.backgroundDark,
+                boxShadow: `0 4px 12px ${theme.alpha(theme.secondary, 0.3)}`
+              }}
+            >
+              <span className="relative z-10">Learn more</span>
+              <ArrowRight size={18} className="transition group-hover:translate-x-1" />
+            </Link>
             </motion.div>
           </motion.div>
         </div>
