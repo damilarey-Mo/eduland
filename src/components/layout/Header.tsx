@@ -88,7 +88,7 @@ export default function Header() {
       "sticky top-0 z-50 transition-all duration-300", 
       isScrolled 
         ? "bg-yellow-200 shadow-md" 
-        : "bg-white/95 backdrop-blur-md"
+        : "bg-mint/95 backdrop-blur-md"
     )}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Global">
         <motion.div 
