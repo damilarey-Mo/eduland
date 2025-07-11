@@ -118,7 +118,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center space-x-3 px-6 py-3 rounded-full shadow-lg backdrop-blur-sm border"
+          <div className="inline-flex items-center space-x-3 px-6 py-3 rounded-full shadow-lg backdrop-blur-sm borderBottom"
             style={{ 
               backgroundColor: theme.alpha(colors.vanilla[400], 0.15),
               borderColor: theme.alpha(theme.secondary, 0.3),
@@ -164,7 +164,7 @@ export default function Hero() {
               style={{ 
                 borderRadius: '12px',
                 overflow: 'hidden',
-                boxShadow: '0 10px 20px rgba(0,0,0,0.15)',
+                boxShadow: '0 10px 20px rgba(193, 169, 169, 0.15)',
               }}
             >
               {/* Animated mint green border */}

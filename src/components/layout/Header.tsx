@@ -90,7 +90,7 @@ export default function Header() {
         ? "bg-yellow-200 shadow-md" 
         : "bg-mint/95 backdrop-blur-md"
     )}>
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Global">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8 lg:pt-5" aria-label="Global">
         <motion.div 
           className="flex lg:flex-1"
           initial={{ opacity: 0 }}
@@ -221,7 +221,7 @@ export default function Header() {
           >
             <div className="fixed inset-0 bg-gray-900/80" aria-hidden="true" />
             <motion.div
-              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-yellow-200 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-yellow-100 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}

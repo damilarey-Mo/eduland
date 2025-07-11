@@ -23,7 +23,7 @@ export default function Home() {
   style={{
     borderBottom: `2px solid ${theme.alpha(colors.mint[400], 0.18)}`,
     background: theme.alpha(colors.vanilla[400], 0.02),
-    boxShadow: `0 4px 24px ${theme.alpha(colors.mint[400], 0.10)}`,
+   
     overflow: 'hidden',
   }}
 >
